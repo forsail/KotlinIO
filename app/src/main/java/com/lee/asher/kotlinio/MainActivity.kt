@@ -52,7 +52,7 @@ class MainActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
             }
 
             override fun onNext(t: HomeBean?) {
-                refreshLayout.isRefreshing = false
+                println("onNext")
                 val oldData = list
                 list = t?.issueList!!
                         .flatMap { it.itemList!! }
@@ -69,10 +69,13 @@ class MainActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
             }
 
             override fun onError(e: Throwable?) {
+                refreshLayout.isRefreshing = false
+                println("onError")
                 println(e?.printStackTrace())
             }
 
             override fun onComplete() {
+                refreshLayout.isRefreshing = false
                 println("onComplete")
             }
         })
