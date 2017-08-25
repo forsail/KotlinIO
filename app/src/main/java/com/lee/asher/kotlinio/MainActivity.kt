@@ -1,7 +1,7 @@
 package com.lee.asher.kotlinio
 
+import android.graphics.Rect
 import android.os.Bundle
-import android.os.Handler
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.LinearLayoutManager
@@ -17,10 +17,8 @@ import com.lee.asher.kotlinio.HomeBean.IssueListBean.ItemListBean
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Action
 import kotlinx.android.synthetic.main.activity_main.*
-import org.reactivestreams.Subscriber
-import org.reactivestreams.Subscription
+import org.jetbrains.anko.dip
 import java.util.*
 
 class MainActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
@@ -41,6 +39,7 @@ class MainActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
 
         val linearLayoutManager: LinearLayoutManager = LinearLayoutManager(this@MainActivity)
         recyclerView.layoutManager = linearLayoutManager
+        recyclerView.addItemDecoration(MyItemDecoration())
     }
 
     fun requestData() {
@@ -96,11 +95,6 @@ class MainActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
             val viewHolder = holder as ViewHolder
             Glide.with(this@MainActivity).load(item.data?.cover?.detail).fitCenter().into(viewHolder.videoImg)
             viewHolder.title?.text = item.data?.title
-            if (position == (list.size - 1)) {
-                viewHolder.divideLine?.visibility = View.GONE
-            } else {
-                viewHolder.divideLine?.visibility = View.VISIBLE
-            }
         }
 
         override fun getItemCount(): Int {
@@ -110,12 +104,10 @@ class MainActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             var videoImg: ImageView? = null
             var title: TextView? = null
-            var divideLine: View? = null
 
             init {
                 videoImg = view.findViewById(R.id.video_img) as ImageView
                 title = view.findViewById(R.id.title) as TextView
-                divideLine = view.findViewById(R.id.title)
             }
         }
     }
@@ -138,6 +130,12 @@ class MainActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
             val newItem = newData?.get(newItemPosition)
             return (oldItem?.data?.cover?.detail == newItem?.data?.cover?.detail)
                     .and(oldItem?.data?.title == newItem?.data?.title)
+        }
+    }
+
+    inner class MyItemDecoration : RecyclerView.ItemDecoration() {
+        override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
+            outRect?.set(0, 0, 0, this@MainActivity.dip(10))
         }
     }
 }
