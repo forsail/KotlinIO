@@ -64,7 +64,7 @@ class MainActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
                 if (recyclerView.adapter == null) {
                     recyclerView.adapter = adapter
                 } else {
-                    var diffUtil = DiffUtil.calculateDiff(DiffCallback(oldData, list))
+                    val diffUtil = DiffUtil.calculateDiff(DiffCallback(oldData, list))
                     diffUtil.dispatchUpdatesTo(adapter)
                 }
             }
