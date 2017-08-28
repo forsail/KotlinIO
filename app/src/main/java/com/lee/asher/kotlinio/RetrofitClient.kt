@@ -37,7 +37,7 @@ class RetrofitClient private constructor(val context: Context, val baseUrl: Stri
                         }
                 ).setLevel(HttpLoggingInterceptor.Level.BODY))
                 .cache(cache)
-//                .addInterceptor(CacheInterceptor(context))
+                .addInterceptor(CacheInterceptor(context))
                 .connectTimeout(defaultTimeOut, TimeUnit.SECONDS)
                 .writeTimeout(defaultTimeOut, TimeUnit.SECONDS)
                 .build()
