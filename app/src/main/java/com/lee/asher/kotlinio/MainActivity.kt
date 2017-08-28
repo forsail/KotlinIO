@@ -138,7 +138,9 @@ class MainActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
 
     inner class MyItemDecoration : RecyclerView.ItemDecoration() {
         override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
-            outRect?.set(0, 0, 0, this@MainActivity.dip(10))
+            if (parent?.layoutManager?.getPosition(view) != (list.size - 1)) {
+                outRect?.set(0, 0, 0, this@MainActivity.dip(10))
+            }
         }
     }
 }
