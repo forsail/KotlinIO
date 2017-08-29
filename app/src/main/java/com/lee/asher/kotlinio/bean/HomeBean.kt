@@ -1,4 +1,4 @@
-package com.lee.asher.kotlinio
+package com.lee.asher.kotlinio.bean
 
 /**
  * Created by lihong on 2017/8/21.

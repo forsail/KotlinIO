@@ -1,4 +1,4 @@
-package com.lee.asher.kotlinio
+package com.lee.asher.kotlinio.util
 
 import android.content.Context
 import android.net.ConnectivityManager

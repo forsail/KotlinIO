@@ -1,5 +1,6 @@
-package com.lee.asher.kotlinio
+package com.lee.asher.kotlinio.http
 
+import com.lee.asher.kotlinio.bean.HomeBean
 import io.reactivex.Observable
 import retrofit2.http.GET
 

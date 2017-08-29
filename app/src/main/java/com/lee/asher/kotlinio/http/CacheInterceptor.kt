@@ -1,7 +1,8 @@
-package com.lee.asher.kotlinio
+package com.lee.asher.kotlinio.http
 
 import android.content.Context
 import android.util.Log
+import com.lee.asher.kotlinio.util.NetworkUtils
 import okhttp3.CacheControl
 import okhttp3.Interceptor
 import okhttp3.Response
