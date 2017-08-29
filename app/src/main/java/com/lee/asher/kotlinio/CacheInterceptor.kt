@@ -17,7 +17,7 @@ class CacheInterceptor(context: Context) : Interceptor {
             val response = chain?.proceed(request)
             val maxAge = 60
             val cacheControl = request?.cacheControl().toString()
-            Log.e("CacheInterceptor", "6s load cache" + cacheControl)
+            Log.e("CacheInterceptor", "60s load cache" + cacheControl)
             return response?.newBuilder()
                     ?.removeHeader("Pragma")
                     ?.removeHeader("Cache-Control")
