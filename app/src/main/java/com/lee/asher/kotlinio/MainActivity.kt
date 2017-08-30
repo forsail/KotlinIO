@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide
 import com.lee.asher.kotlinio.base.BaseActivity
 import com.lee.asher.kotlinio.bean.HomeBean
 import com.lee.asher.kotlinio.bean.HomeBean.IssueListBean.ItemListBean
-import com.lee.asher.kotlinio.extension.applyScheduleres
+import com.lee.asher.kotlinio.extension.applySchedulers
 import com.lee.asher.kotlinio.http.ApiService
 import com.lee.asher.kotlinio.http.RetrofitClient
 import io.reactivex.Observable
@@ -52,7 +52,7 @@ class MainActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
         val apiService = retrofitClient.create(ApiService::class.java)
 
         var observable: Observable<HomeBean>? = apiService?.getHomeData()
-        observable?.applyScheduleres()?.subscribe(object : Observer<HomeBean> {
+        observable?.applySchedulers()?.subscribe(object : Observer<HomeBean> {
             override fun onSubscribe(d: Disposable?) {
             }
 
