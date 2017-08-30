@@ -59,9 +59,9 @@ class MainActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
             override fun onNext(t: HomeBean?) {
                 println("onNext")
                 val oldData = list
-                list = t?.issueList!!
-                        .flatMap { it.itemList!! }
-                        .filter { it.type.equals("video") } as ArrayList<ItemListBean>
+                list = t?.issueList
+                        ?.flatMap { it.itemList!! }
+                        ?.filter { it.type.equals("video") } as ArrayList<ItemListBean>
 //                        .forEach { list.add(it) }
                 val size = list.size
                 Log.d("asher", "$size")
